@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: my_postgres
+    environment:
+      POSTGRES_USER: myuser         # Nom d'utilisateur pour PostgreSQL
+      POSTGRES_PASSWORD: mypassword # Mot de passe pour PostgreSQL
+      POSTGRES_DB: maga             # Base de données initiale
+    ports:
+      - "5432:5432"                 # Mappe le port PostgreSQL local au conteneur
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persistance des données
+
+volumes:
+  postgres_data:
